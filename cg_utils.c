@@ -19,6 +19,7 @@
  */
 
 #include "cg_utils.h"
+#include "math.h"
 
 size_t bitDepth(CGDisplayModeRef mode) {
     size_t depth = 0;
@@ -68,7 +69,7 @@ unsigned int configureDisplay(CGDirectDisplayID display, struct config *config, 
         if (pw == config->w &&
             ph == config->h &&
             pd == config->d &&
-            pr == config->r) {
+            round(pr) == round(config->r)) {
             looking = 0; // Stop looking for more modes!
             newMode = possibleMode;
         }
